@@ -1,0 +1,92 @@
+export default function App() { const complaints = [ { id: 1, category: 'Hostel', issue: 'Water leakage in room', status: 'Pending', }, { id: 2, category: 'Library', issue: 'AC not working', status: 'Resolved', }, ];
+
+return ( <div className="min-h-screen bg-gradient-to-br from-purple-100 to-white p-6"> <div className="max-w-6xl mx-auto"> <div className="bg-white shadow-2xl rounded-3xl p-8 mb-8"> <h1 className="text-4xl font-bold text-purple-700 mb-2"> Smart Campus Complaint System </h1> <p className="text-gray-600 text-lg"> Manage and track campus complaints easily. </p> </div>
+
+<div className="grid md:grid-cols-3 gap-6 mb-8">
+      <div className="bg-white rounded-3xl shadow-lg p-6">
+        <h2 className="text-xl font-bold text-purple-700">
+          Total Complaints
+        </h2>
+        <p className="text-4xl mt-4 font-bold">25</p>
+      </div>
+
+      <div className="bg-white rounded-3xl shadow-lg p-6">
+        <h2 className="text-xl font-bold text-orange-500">
+          Pending
+        </h2>
+        <p className="text-4xl mt-4 font-bold">8</p>
+      </div>
+
+      <div className="bg-white rounded-3xl shadow-lg p-6">
+        <h2 className="text-xl font-bold text-green-600">
+          Resolved
+        </h2>
+        <p className="text-4xl mt-4 font-bold">17</p>
+      </div>
+    </div>
+
+    <div className="bg-white rounded-3xl shadow-xl p-8 mb-8">
+      <h2 className="text-2xl font-bold text-purple-700 mb-6">
+        Submit Complaint
+      </h2>
+
+      <form className="grid gap-4">
+        <input
+          type="text"
+          placeholder="Enter Complaint Category"
+          className="p-4 border rounded-2xl"
+        />
+
+        <textarea
+          placeholder="Describe your issue"
+          className="p-4 border rounded-2xl h-32"
+        />
+
+        <button
+          type="submit"
+          className="bg-purple-700 hover:bg-purple-800 text-white p-4 rounded-2xl text-lg font-bold transition"
+        >
+          Submit Complaint
+        </button>
+      </form>
+    </div>
+
+    <div className="bg-white rounded-3xl shadow-xl p-8">
+      <h2 className="text-2xl font-bold text-purple-700 mb-6">
+        Complaint Tracking
+      </h2>
+
+      <div className="space-y-4">
+        {complaints.map((item) => (
+          <div
+            key={item.id}
+            className="border rounded-2xl p-5 flex justify-between items-center"
+          >
+            <div>
+              <h3 className="font-bold text-lg">{item.category}</h3>
+              <p className="text-gray-600">{item.issue}</p>
+            </div>
+
+            <div>
+              <span
+                className={`px-4 py-2 rounded-full text-white font-bold ${
+                  item.status === 'Resolved'
+                    ? 'bg-green-500'
+                    : 'bg-orange-500'
+                }`}
+              >
+                {item.status}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="mt-10 text-center text-gray-500">
+      © 2026 Smart Campus Complaint System
+    </div>
+  </div>
+</div>
+
+); }
